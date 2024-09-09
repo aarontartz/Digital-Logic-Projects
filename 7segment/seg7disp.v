@@ -25,8 +25,6 @@ module seg7disp(
     input wire [4:0] data_in,
     output reg [7:0] data_out
     );
-
-    wire [7:0] data_in;
     
     always @(posedge clk) begin       // sequential logic
         case (data_in)
