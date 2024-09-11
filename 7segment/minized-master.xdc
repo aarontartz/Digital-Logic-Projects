@@ -1,11 +1,11 @@
-set_property -dict { PACKAGE_PIN R8   IOSTANDARD LVCMOS33 } [get_ports { ck_io0 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN P8   IOSTANDARD LVCMOS33 } [get_ports { ck_io1 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN P9   IOSTANDARD LVCMOS33 } [get_ports { ck_io2 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN R7   IOSTANDARD LVCMOS33 } [get_ports { ck_io3 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN N7   IOSTANDARD LVCMOS33 } [get_ports { ck_io4 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN R10   IOSTANDARD LVCMOS33 } [get_ports { ck_io5 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN P10   IOSTANDARD LVCMOS33 } [get_ports { ck_io6 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN N8   IOSTANDARD LVCMOS33 } [get_ports { ck_io7 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN M9   IOSTANDARD LVCMOS33 } [get_ports { ck_io8 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN N9   IOSTANDARD LVCMOS33 } [get_ports { ck_io9 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
-set_property -dict { PACKAGE_PIN M10   IOSTANDARD LVCMOS33 } [get_ports { ck_io10 }]; #IO_L11P_T1_SRCC_34 Sch=ck_io[0]
+set_property -dict { PACKAGE_PIN R8   IOSTANDARD LVCMOS33 } [get_ports { ck_io0 }];  # Assign pin R8 to ck_io0 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN P8   IOSTANDARD LVCMOS33 } [get_ports { ck_io1 }];  # Assign pin P8 to ck_io1 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN P9   IOSTANDARD LVCMOS33 } [get_ports { ck_io2 }];  # Assign pin P9 to ck_io2 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN R7   IOSTANDARD LVCMOS33 } [get_ports { ck_io3 }];  # Assign pin R7 to ck_io3 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN N7   IOSTANDARD LVCMOS33 } [get_ports { ck_io4 }];  # Assign pin N7 to ck_io4 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN R10  IOSTANDARD LVCMOS33 } [get_ports { ck_io5 }];  # Assign pin R10 to ck_io5 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN P10  IOSTANDARD LVCMOS33 } [get_ports { ck_io6 }];  # Assign pin P10 to ck_io6 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN N8   IOSTANDARD LVCMOS33 } [get_ports { ck_io7 }];  # Assign pin N8 to ck_io7 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN M9   IOSTANDARD LVCMOS33 } [get_ports { ck_io8 }];  # Assign pin M9 to ck_io8 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN N9   IOSTANDARD LVCMOS33 } [get_ports { ck_io9 }];  # Assign pin N9 to ck_io9 with LVCMOS33 I/O standard (3.3V logic level)
+set_property -dict { PACKAGE_PIN M10  IOSTANDARD LVCMOS33 } [get_ports { ck_io10 }]; # Assign pin M10 to ck_io10 with LVCMOS33 I/O standard (3.3V logic level)
