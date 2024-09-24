@@ -68,7 +68,6 @@ module uart(
     always @* begin
         if ((state == DATA) && (index > 0))
             index = index + 1;
-            
     end
     
 endmodule
