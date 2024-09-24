@@ -48,13 +48,16 @@ module tx_tb;
         .data_in(data),
         .o_bit(o_bit),
         .fsm_clk(fsm_clk)
-    );
+    );                              
     
     always #1 clk = ~clk;
     
     initial begin
         clk <= 0;
         data_en <= 0;
+    end
+    
+    initial begin
         @(posedge baud_clk_wire);
         @(posedge baud_clk_wire);
         data_en <= 1;
