@@ -25,7 +25,17 @@ module tx_tb;
     reg data_en;
     reg [7:0] data;
     wire o_bit;
+    wire fsm_clk;
     wire baud_clk_wire;
+
+    wire [7:0] lastname [0:4];
+    assign lastname[0] = "T";
+    assign lastname[1] = "a";
+    assign lastname[2] = "r";
+    assign lastname[3] = "t";
+    assign lastname[4] = "z";
+    
+    reg [4:0] index = 0;
     
     baud_gen baud_gen00 (
         .clk(clk),
@@ -36,17 +46,22 @@ module tx_tb;
         .baud_clk(baud_clk_wire),
         .data_en(data_en),
         .data_in(data),
-        .o_bit(o_bit)
+        .o_bit(o_bit),
+        .fsm_clk(fsm_clk)
     );
     
     always #1 clk = ~clk;
     
     initial begin
-        data 
+        clk <= 0;
+        data_en <= 0;
     end
     
-    initial begin
-        @(posedge clk)
+    always @(posedge fsm_clk) begin
+        data <= lastname[index];
+        if (index > 4)
+            index <= 0;
+        else
+            index <= index + 1;
     end
-    
 endmodule
