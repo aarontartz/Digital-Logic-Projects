@@ -22,6 +22,7 @@
 
 module uart(
     input wire baud_clk,
+    input wire data_en,
     input wire [7:0] data_in,
     output reg o_bit
     );
@@ -40,16 +41,26 @@ module uart(
             START: begin
                 data <= data_in;
                 o_bit <= 0;
+                state <= DATA;
             end
             DATA: begin
-                o_bit <= data[index];
+                if (index > 7)
+                    state <= STOP;
+                else
+                    o_bit <= data[index];
             end
             STOP: begin
                 o_bit <= 1;
                 index <= 0;
+                if (data_en == 1)
+                    state <= START;
+                else
+                    state <= IDLE;
             end
             IDLE: begin
                 o_bit <= 1;
+                if (data_en == 1)
+                    state <= START;
             end
         endcase
     end
@@ -57,6 +68,7 @@ module uart(
     always @* begin
         if ((state == DATA) && (index > 0))
             index = index + 1;
+            
     end
     
 endmodule
