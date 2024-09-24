@@ -23,7 +23,7 @@
 module tx_tb;
     reg clk;
     reg data_en;
-    reg [7:0] data_en;
+    reg [7:0] data;
     wire o_bit;
     wire baud_clk_wire;
     
@@ -38,5 +38,15 @@ module tx_tb;
         .data_in(data),
         .o_bit(o_bit)
     );
+    
+    always #1 clk = ~clk;
+    
+    initial begin
+        data 
+    end
+    
+    initial begin
+        @(posedge clk)
+    end
     
 endmodule
