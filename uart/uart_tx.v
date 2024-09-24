@@ -28,7 +28,7 @@ module uart_tx(
     output reg fsm_clk
     );
     
-    localparam [3:0] START = 2'b00,
+    localparam [1:0] START = 2'b00,
                      DATA  = 2'b01,         
                      STOP  = 2'b10,
                      IDLE  = 2'b11;
