@@ -22,7 +22,7 @@
 
 module baud_gen(
     input wire clk,
-    output reg baud_clk
+    output wire baud_clk
     );
     
     // 9600 = 100MHz / (10 * x)
@@ -31,10 +31,13 @@ module baud_gen(
     localparam [15:0] BAUD_SCALE = 16'd10416;
     
     reg [31:0] count = 0;
+    reg baud_clk_reg = 0;
+    
+    assign baud_clk = baud_clk_reg;
     
     always @(posedge clk) begin
         if (count == BAUD_SCALE) begin
-            baud_clk <= ~baud_clk;
+            baud_clk_reg <= ~baud_clk_reg;
             count <= 0;
         end
         else
