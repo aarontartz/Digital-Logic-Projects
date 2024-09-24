@@ -1,52 +1,62 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date: 09/24/2024 11:41:19 AM
+// Create Date: 08/28/2024 12:37:20 PM
 // Design Name: 
-// Module Name: tx_tb
+// Module Name: bcd_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module tx_tb;
+module bcd_tb;
+    reg [3:0] d;
     reg clk;
-    reg data_en;
-    reg [7:0] data;
-    wire o_bit;
-    wire baud_clk_wire;
-    
-    baud_gen baud_gen00 (
+    reg en;
+    reg load;
+    reg up;
+    reg clr;
+    wire [3:0] q;
+    wire co;
+
+    bcd bcd00 (
+        .d(d),
         .clk(clk),
-        .baud_clk(baud_clk_wire)
+        .en(en),
+        .load(load),
+        .up(up),
+        .clr(clr),
+        .q(q),
+        .co(co)
     );
-    
-    uart_tx uart_tx00 (
-        .baud_clk(baud_clk_wire),
-        .data_en(data_en),
-        .data_in(data),
-        .o_bit(o_bit)
-    );
-    
-    always #1 clk = ~clk;
+
+    initial begin
+        d <= 4'd3;
+        clk = 1;
+        en = 0;
+        load = 0;
+        up = 0;
+        clr = 0;
+    end
+
+    always #10 clk = ~clk;
     
     initial begin
-        data
+        @(posedge clk);
+        clr <= 1;
+        load <= 1;
+        en <= 1;
+        @(posedge clk);
+        load <= 0;
+        up <= 1;
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        up <= 0;
+        @(posedge clk);
+        @(posedge clk);
+        clr <= 0;
     end
-    
-    initial begin
-        @(posedge clk)
-    end
-    
 endmodule
