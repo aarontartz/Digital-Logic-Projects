@@ -25,13 +25,15 @@ module baud_gen(
     output reg baud_clk
     );
     
-    // 9600 = 100MHz / (8 * x)
+    // 9600 = 100MHz / (10 * x)
     // x = 1302
     
-    reg [11:0] count = 0;
+    localparam [15:0] BAUD_SCALE = 16'd10416;
+    
+    reg [31:0] count = 0;
     
     always @(posedge clk) begin
-        if (count == 12'd1302) begin
+        if (count == BAUD_SCALE) begin
             baud_clk <= ~baud_clk;
             count <= 0;
         end
