@@ -20,11 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module uart(
+module uart_tx(
     input wire baud_clk,
     input wire data_en,
     input wire [7:0] data_in,
-    output reg o_bit
+    output reg o_bit,
+    output reg fsm_clk
     );
     
     localparam [3:0] START = 2'b00,
@@ -39,6 +40,7 @@ module uart(
     always @(posedge baud_clk) begin
         case (state)
             START: begin
+                fsm_clk <= 1;
                 data <= data_in;
                 o_bit <= 0;
                 state <= DATA;
@@ -52,6 +54,7 @@ module uart(
             STOP: begin
                 o_bit <= 1;
                 index <= 0;
+                fsm_clk <= 0;
                 if (data_en == 1)
                     state <= START;
                 else
