@@ -55,12 +55,15 @@ module tx_tb;
     initial begin
         clk <= 0;
         data_en <= 0;
+        @(posedge baud_clk_wire);
+        @(posedge baud_clk_wire);
+        data_en <= 1;
     end
     
     always @(posedge fsm_clk) begin
         data <= lastname[index];
         if (index > 4)
-            index <= 0;
+            data_en <= 0;
         else
             index <= index + 1;
     end
