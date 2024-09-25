@@ -25,10 +25,7 @@ module baud_gen(
     output wire baud_clk
     );
     
-    // 9600 = 100MHz / (10 * x)
-    // x = 1302
-    
-    localparam [15:0] BAUD_SCALE = 16'd10416;
+    localparam [15:0] BAUD_SCALE = 16'd100;  // just arbitrary value, can change later for exact baud rate
     
     reg [31:0] count = 0;
     reg baud_clk_reg = 0;
