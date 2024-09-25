@@ -25,7 +25,7 @@ module uart_tx(
     input wire data_en,
     input wire [7:0] data_in,
     output reg o_bit,
-    output reg fsm_clk
+    output wire fsm_clk
     );
     
     localparam [1:0] START = 2'b00,
@@ -37,40 +37,51 @@ module uart_tx(
     reg [7:0] data;
     reg [3:0] index = 0;
     
+    reg fsm_clk_reg = 0;
+    assign fsm_clk = fsm_clk_reg;
+    
     always @(posedge baud_clk) begin
         case (state)
             START: begin
-                fsm_clk <= 1;
+                fsm_clk_reg <= 1;
                 data <= data_in;
-                o_bit <= 0;
                 state <= DATA;
             end
             DATA: begin
-                if (index > 7)
+                if (index == 7)
                     state <= STOP;
                 else
-                    o_bit <= data[index];
+                    index <= index + 1;
             end
             STOP: begin
-                o_bit <= 1;
                 index <= 0;
-                fsm_clk <= 0;
+                fsm_clk_reg <= 0;
                 if (data_en == 1)
                     state <= START;
                 else
                     state <= IDLE;
             end
             IDLE: begin
-                o_bit <= 1;
                 if (data_en == 1)
                     state <= START;
             end
         endcase
     end
     
-    always @* begin
-        if ((state == DATA) && (index > 0))
-            index = index + 1;
+    always @(*) begin
+        case (state)
+            START: begin
+                o_bit = 0;
+            end
+            DATA: begin
+                o_bit = data[index];
+            end
+            STOP: begin
+                o_bit = 1;
+            end
+            IDLE: begin
+                o_bit = 1;
+            end
+        endcase
     end
-    
 endmodule
