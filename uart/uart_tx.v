@@ -12,7 +12,7 @@ module uart_tx(
     input wire baud_clk,
     input wire data_en,
     input wire [7:0] data_in,
-    output reg o_bit,
+    output reg data_out,
     output wire fsm_clk
     );
     
