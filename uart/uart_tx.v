@@ -1,21 +1,9 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Engineer: Aaron Tartz
 // 
-// Create Date: 09/24/2024 09:44:13 AM
-// Design Name: 
-// Module Name: uart
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
+// Create Date: 09/24/2024 09:44:13 AM 
+// Module Name: uart_tx
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
