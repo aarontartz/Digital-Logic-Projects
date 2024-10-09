@@ -18,10 +18,10 @@ module top_tb;
 
     wire [7:0] lastname [0:4];
     assign lastname[0] = "T";
-    //assign lastname[1] = "a";
-    //assign lastname[2] = "r";
-    //assign lastname[3] = "t";
-    //assign lastname[4] = "z";
+    assign lastname[1] = "a";
+    assign lastname[2] = "r";
+    assign lastname[3] = "t";
+    assign lastname[4] = "z";
     
     reg [4:0] index = 0;
     
@@ -45,6 +45,13 @@ module top_tb;
         @(posedge clk);
         tx_en <= 1;
         rx_en <= 1;
+    end
+    
+    always @(posedge fsm_clk) begin
+        if (index == 4)
+            tx_en <= 0;
+        else
+            index <= index + 1;
     end
     
     always @(*) data_in <= lastname[index];
