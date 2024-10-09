@@ -1,21 +1,9 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Engineer: Aaron Tartz
 // 
 // Create Date: 09/24/2024 11:41:19 AM
-// Design Name: 
 // Module Name: tx_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -24,7 +12,7 @@ module tx_tb;
     reg clk;
     reg data_en;
     reg [7:0] data;
-    wire o_bit;
+    wire tx_out;
     wire fsm_clk;
     wire baud_clk_wire;
 
@@ -46,7 +34,7 @@ module tx_tb;
         .baud_clk(baud_clk_wire),
         .data_en(data_en),
         .data_in(data),
-        .o_bit(o_bit),
+        .tx_out(tx_out),
         .fsm_clk(fsm_clk)
     );                              
     
