@@ -1,18 +1,30 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineer: Aaron Tartz
+// Company: 
+// Engineer: 
 // 
-// Create Date: 09/24/2024 09:44:13 AM 
-// Module Name: uart_tx
+// Create Date: 09/24/2024 09:44:13 AM
+// Design Name: 
+// Module Name: uart
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
 
 module uart_tx(
     input wire baud_clk,
-    input wire data_en,
+    input wire tx_en,
     input wire [7:0] data_in,
-    output reg data_out,
+    output reg tx_out,
     output wire fsm_clk
     );
     
@@ -44,13 +56,13 @@ module uart_tx(
             STOP: begin
                 index <= 0;
                 fsm_clk_reg <= 0;
-                if (data_en == 1)
+                if (tx_en == 1)
                     state <= START;
                 else
                     state <= IDLE;
             end
             IDLE: begin
-                if (data_en == 1)
+                if (tx_en == 1)
                     state <= START;
             end
         endcase
@@ -59,16 +71,16 @@ module uart_tx(
     always @(*) begin
         case (state)
             START: begin
-                o_bit = 0;
+                tx_out = 0;
             end
             DATA: begin
-                o_bit = data[index];
+                tx_out = data[index];
             end
             STOP: begin
-                o_bit = 1;
+                tx_out = 1;
             end
             IDLE: begin
-                o_bit = 1;
+                tx_out = 1;
             end
         endcase
     end
